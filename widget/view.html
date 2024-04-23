@@ -1,0 +1,22 @@
+<!-- Copyright start
+  MIT License
+  Copyright (c) 2024 Fortinet Inc
+  Copyright end -->
+<link rel="stylesheet" type="text/css" href="customPicklistMessage-1.1.0/widgetAssets/css/infoGraphics.css" />
+<div class="widget widget-container chart" style="overflow: auto;">
+   <div class="display-flex-space-between margin-chart">
+      <div class="padding-right-0 padding-left-0 widget-dashboard-title-width"
+         data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
+         <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">{{config.title}}</h5>
+      </div>
+      <div class="padding-right-0 padding-left-0"
+         data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
+      </div>
+   </div>
+   <div class="list-unstyled padding-20 margin-top-negative-20" style="white-space: nowrap;">
+     <div data-ng-repeat="item in picklistObject" ng-class="{ 'custom-div': true, 'active': item.itemValue === pickListValue , 'inactive': item.itemValue !== pickListValue || pickListValue === '' }" ng-click="handleClick(item.itemValue,item['@id'])" style="display: inline-flex; align-items: center; padding: 5px;">
+       		<img ng-src="{{ item.itemValue === pickListValue ? activeItemImage : inactiveItemImage }}" alt="{{ item.itemValue }}" style="width: auto; hieght:50px; object-fit: contain;"/>
+         <span class="custom-span" title="{{item.itemValue}}" style="margin-left: 40px;">{{ item.itemValue }}</span>
+      </div>
+   </div>
+</div>
