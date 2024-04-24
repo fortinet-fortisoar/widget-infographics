@@ -7,21 +7,21 @@
 angular.module('cybersponse')
   .controller('infoGraphics100Ctrl', infoGraphics100Ctrl);
 
-infoGraphics100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', '_'];
+infoGraphics100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource','widgetBasePath', '_'];
 
-function infoGraphics100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, _) {
+function infoGraphics100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource,widgetBasePath, _) {
   var widgetsubscription;
   $scope.config = config;
   $scope.title = '';
   var currentTheme = $rootScope.theme.id;
   $scope.entity = FormEntityService.get();
   $scope.pickListValue = $scope.entity['originalData'][config.picklistItem] ? $scope.entity['originalData'][config.picklistItem]['itemValue'] : '';
+  $scope.activeItemImage = currentTheme === 'light' ? widgetBasePath+'images/chevron_inactive_arrow.png' : widgetBasePath+'images/chevron_active_arrow.png';
+  $scope.inactiveItemImage = currentTheme === 'light' ? widgetBasePath+'images/chevron_active_arrow.png' : widgetBasePath+'images/chevron_inactive_arrow.png';
 
   function init() {
     widgetWSSubscribe();
     getPicklistValues();
-    $scope.activeItemImage = currentTheme === 'light' ? 'widgets/installed/infoGraphics-1.0.0/images/chevron_inactive_arrow.png' : 'widgets/installed/infoGraphics-1.0.0/images/chevron_active_arrow.png';
-    $scope.inactiveItemImage = currentTheme === 'light' ? 'widgets/installed/infoGraphics-1.0.0/images/chevron_active_arrow.png' : 'widgets/installed/infoGraphics-1.0.0/images/chevron_inactive_arrow.png';
   }
 
   function getPicklistValues() {
