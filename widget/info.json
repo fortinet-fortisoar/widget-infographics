@@ -1,0 +1,23 @@
+{
+    "name": "picklistAsPhases",
+    "title": "Picklist as Phases",
+    "subTitle": "Info Graphics",
+    "version": "1.0.0",
+    "publishedDate": 1708552690,
+    "releaseNotes": "unavailable",
+    "metadata": {
+        "description": "",
+	"help_online": "https://github.com/fortinet-fortisoar/widget-picklist-as-phases/tree/release/1.0.0/README.md",
+        "pages": [
+            "View Panel"
+        ],
+        "certified": "Yes",
+        "publisher": "Fortinet",
+        "compatibility": [
+            "7.4.3"
+        ],
+        "category": [
+            "Information"
+        ]
+    }
+}
