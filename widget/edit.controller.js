@@ -5,11 +5,11 @@
 'use strict';
 
 angular.module('cybersponse')
-  .controller('editInfoGraphics100Ctrl', editInfoGraphics100Ctrl);
+  .controller('editpicklistAsPhases100Ctrl', editpicklistAsPhases100Ctrl);
 
-editInfoGraphics100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
+editpicklistAsPhases100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
 
-function editInfoGraphics100Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
+function editpicklistAsPhases100Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
   $scope.cancel = cancel;
   $scope.save = save;
   $scope.config = config;
@@ -19,9 +19,9 @@ function editInfoGraphics100Ctrl($scope, $uibModalInstance, config, $state, Enti
   }
 
   function save() {
-    if ($scope.editInfoGraphicsForm.$invalid) {
-      $scope.editInfoGraphicsForm.$setTouched();
-      $scope.editInfoGraphicsForm.$focusOnFirstError();
+    if ($scope.editpicklistAsPhasesForm.$invalid) {
+      $scope.editpicklistAsPhasesForm.$setTouched();
+      $scope.editpicklistAsPhasesForm.$focusOnFirstError();
       return;
     }
 
