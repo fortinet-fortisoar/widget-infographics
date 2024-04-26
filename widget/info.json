@@ -13,6 +13,10 @@
         ],
         "certified": "Yes",
         "publisher": "Fortinet",
+	"snapshots": [
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/picklistAsPhases-1.0.0/images/edit-picklist-as-phases.png",
+            "https://repo.fortisoar.fortinet.com/fsr-widgets/picklistAsPhases-1.0.0/images/detailed-view.png"
+            ],
         "compatibility": [
             "7.4.3"
         ],
