@@ -2,7 +2,7 @@
   MIT License
   Copyright (c) 2024 Fortinet Inc
   Copyright end -->
-<form data-ng-submit="save()" class="noMargin" name="editInfoGraphicsForm" data-ng-class="{'state-wait': processing }" novalidate>
+<form data-ng-submit="save()" class="noMargin" name="editPicklistAsPhasesForm" data-ng-class="{'state-wait': processing }" novalidate>
     <div class="modal-header">
         <h3 class="modal-title col-md-9">Picklist as Phases</h3>
         <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close" id="close-edit-widget-form-btn">
@@ -29,11 +29,11 @@
 				</label>
             </div>
             <div class="col-md-4 padding-right-0">
-                <div class="margin-bottom-0" data-ng-class="{ 'has-error': editInfoGraphicsForm.resourcefields.$invalid && editInfoGraphicsForm.resourcefields.$touched }">
+                <div class="margin-bottom-0" data-ng-class="{ 'has-error': editPicklistAsPhasesForm.resourcefields.$invalid && editPicklistAsPhasesForm.resourcefields.$touched }">
                     <select name="resourcefields" id="resourcefields" class="form-control" data-ng-options="field.name as field.title for field in fieldsArray" data-ng-model="config.picklistItem" data-ng-change="loadlistitem(config.picklistItem)" required>
                         <option value="">Select an Option</option>
                     </select>
-                    <div data-cs-messages="editInfoGraphicsForm.resourcefields"></div>
+                    <div data-cs-messages="editPicklistAsPhasesForm.resourcefields"></div>
                 </div>
             </div>
         </div>

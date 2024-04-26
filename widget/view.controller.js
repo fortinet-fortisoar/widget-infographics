@@ -15,6 +15,7 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   $scope.title = '';
   var currentTheme = $rootScope.theme.id;
   $scope.entity = FormEntityService.get();
+  $scope.widgetBasePath =  widgetBasePath;
   $scope.pickListValue = $scope.entity['originalData'][config.picklistItem] ? $scope.entity['originalData'][config.picklistItem]['itemValue'] : '';
   $scope.activeItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_active_chevron.png' : widgetBasePath+'images/chevron_active_arrow.png';
   $scope.inactiveItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_inactive_chevron.png' : widgetBasePath+'images/chevron_inactive_arrow.png';
