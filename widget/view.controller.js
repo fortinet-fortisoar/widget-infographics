@@ -43,6 +43,20 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
       });
   }
 
+
+  $scope.$on('formGroup:fieldChange', function (event, entity) {
+    entity = entity.module === $scope.entity.name ? entity : undefined;
+    if(entity.originalData[config.picklistItem]){
+      if(entity.originalData[config.picklistItem]['itemValue'] !== $scope.pickListValue){
+        $scope.pickListValue = entity.originalData[config.picklistItem]['itemValue'];
+      }
+    }
+    else{
+      $scope.pickListValue = '';
+    }
+  });
+
+
   $scope.$on('$destroy', function() {
     if (widgetsubscription) {
       websocketService.unsubscribe(widgetsubscription);
