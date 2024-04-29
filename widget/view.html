@@ -20,8 +20,8 @@
 				style="display: inline-flex; align-items: center; padding: 5px;">
 			<img	ng-src="{{ item.itemValue === pickListValue ? activeItemImage : inactiveItemImage }}" 
 					alt="{{ item.itemValue }}"
-					style="width: auto; height:55px; object-fit: contain; padding: 0 10px;"/>
-			<span	class="custom-span" title="{{item.itemValue}}" style="margin-left: 52px;">
+					style="width: auto; height:55px; object-fit: contain;"/>
+			<span	class="custom-span" ng-class="{'custom-span-text-inactive' : item.itemValue != pickListValue, 'custom-span-text-inactive-clickable':  !config.readOnly}" title="{{item.itemValue}}" style="margin-left: 45px;">
 				{{ item.itemValue }}
 			</span>
 		</div>

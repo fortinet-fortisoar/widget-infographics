@@ -1,39 +1,52 @@
 /* Common styles for both active and inactive states */
 .custom-div {
-    padding: 19px 50px;
-    width: 190px;
-    height: 55px;
-    display: inline-flex;
-    margin-right: -25px;
-    position: relative;
+  padding: 19px 50px;
+  width: 190px;
+  height: 55px;
+  display: inline-flex;
+  margin-right: -25px;
+  position: relative;
 }
-
-
 .custom-span {
-    font-size: 10pt;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    position: absolute;
-    bottom: 20px;
-    max-width: 100px;
+  font-size: 10pt;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 20px;
+  max-width: 100px;
+  font-weight: bold;
 }
 
+.custom-span-text-inactive {
+   opacity: .7;
+}
+
+.custom-span-text-inactive-clickable:hover {
+   opacity: .85;
+}
 /* Styles for active state */
 .custom-div.active {
-    cursor: default;
+  cursor: default;
 }
-
 /* Styles for inactive state */
 .custom-div.inactive {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 .custom-div.inactive:hover {
-    opacity: 1;
-    transform: scale(1.3);
+  transform: scale(1.06);
+}
+.custom-div.inactive img {
+  opacity: 0.3;
+}
+.custom-div.inactive:hover img {
+  opacity: .6;
 }
 
-.custom-div.inactive img {
-    opacity: 0.65; /* Opacity for the image */
+.custom-div.inactive:hover span {
+  opacity: .9;
+}
+
+.custom-div.inactive span {
+  font-style: italic;
 }

@@ -20,7 +20,8 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   $scope.visibility = $scope.entity.fields[config.picklistItem]['visible'];
   $scope.pickListValue = $scope.entity['originalData'][config.picklistItem] ? $scope.entity['originalData'][config.picklistItem]['itemValue'] : '';
   $scope.activeItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_active_chevron.png' : widgetBasePath+'images/chevron_active_arrow.png';
-  $scope.inactiveItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_inactive_chevron.png' : widgetBasePath+'images/chevron_inactive_arrow.png';
+  $scope.inactiveItemImage = widgetBasePath + 'images/' + ((currentTheme === 'light') ? ((config.readOnly) ? 'light_theme_inactive_chevron.png' : 'light_theme_active_chevron.png') : ((config.readOnly) ? 'chevron_inactive_arrow.png' : 'chevron_active_arrow.png'));
+
 
   function init() {
     widgetWSSubscribe();
