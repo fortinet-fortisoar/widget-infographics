@@ -8,6 +8,7 @@
     position: relative;
 }
 
+
 .custom-span {
     font-size: 10pt;
     text-overflow: ellipsis;
@@ -20,16 +21,19 @@
 
 /* Styles for active state */
 .custom-div.active {
-  cursor: default;
+    cursor: default;
 }
 
 /* Styles for inactive state */
 .custom-div.inactive {
-  opacity: 0.65;
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .custom-div.inactive:hover {
     opacity: 1;
-    transform: scale(1.06);
+    transform: scale(1.3);
+}
+
+.custom-div.inactive img {
+    opacity: 0.65; /* Opacity for the image */
 }

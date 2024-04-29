@@ -16,6 +16,8 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   var currentTheme = $rootScope.theme.id;
   $scope.entity = FormEntityService.get();
   $scope.widgetBasePath =  widgetBasePath;
+  $scope.widgetCssPath = widgetBasePath+"widgetAssets/css/infoGraphics.css";
+  $scope.visibility = $scope.entity.fields[config.picklistItem]['visible'];
   $scope.pickListValue = $scope.entity['originalData'][config.picklistItem] ? $scope.entity['originalData'][config.picklistItem]['itemValue'] : '';
   $scope.activeItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_active_chevron.png' : widgetBasePath+'images/chevron_active_arrow.png';
   $scope.inactiveItemImage = currentTheme === 'light' ? widgetBasePath+'images/light_theme_inactive_chevron.png' : widgetBasePath+'images/chevron_inactive_arrow.png';
@@ -46,6 +48,7 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
 
   $scope.$on('formGroup:fieldChange', function (event, entity) {
     entity = entity.module === $scope.entity.name ? entity : undefined;
+    $scope.visibility = $scope.entity.fields[config.picklistItem]['visible'];
     if(entity.originalData[config.picklistItem]){
       if(entity.originalData[config.picklistItem]['itemValue'] !== $scope.pickListValue){
         $scope.pickListValue = entity.originalData[config.picklistItem]['itemValue'];
