@@ -3,64 +3,68 @@
   Copyright (c) 2024 Fortinet Inc
   Copyright end -->
 <form data-ng-submit="save()" class="noMargin" name="editPicklistAsPhasesForm" data-ng-class="{'state-wait': processing }" novalidate>
-	<div class="modal-header">
-		<h3 class="modal-title col-md-9">Picklist as Phases</h3>
-		<button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close" id="close-edit-widget-form-btn">
-			<div aria-hidden="true" class="version-button">+</div>
-		</button>
-	</div>
-    <div class="modal-body">
-		<div class="form-group">
-			<div class="row">
-				<div class="col-md-12">
-					<label for="widget-title" class="control-label">Widget Title</label>
-					<input id="widget-title" name="widget-title" type="text" class="form-control" data-ng-model="config.title">
-				</div>
-			</div>
-		</div>
-		<div class="form-group row margin-bottom-sm">
-			<div class="col-md-3 padding-right-0 margin-top-sm">
-				<label for="resourcefields" class="control-label margin-top-sm">
-					Choose Picklist
-					<span class="text-danger">*</span>
-					<span data-uib-tooltip="Select a picklist field to display its values in the graphical representation" data-tooltip-append-to-body="true">
-						<i class="icon icon-information font-Size-13"></i>
-					</span>
-				</label>
-			</div>
-			<div class="col-md-4 padding-right-0">
-				<div class="margin-bottom-0" data-ng-class="{ 'has-error': editPicklistAsPhasesForm.resourcefields.$invalid && editPicklistAsPhasesForm.resourcefields.$touched }">
-					<select name="resourcefields" id="resourcefields" class="form-control" data-ng-options="field.name as field.title for field in fieldsArray" data-ng-model="config.picklistItem" data-ng-change="loadlistitem(config.picklistItem)" required>
-						<option value="">Select an Option</option>
-					</select>
-					<div data-cs-messages="editPicklistAsPhasesForm.resourcefields"></div>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row margin-bottom-sm">
-			<div class="col-md-3 padding-right-0 margin-top-sm">
-				<label class="control-label margin-top-sm">Read Only
-					<span data-uib-tooltip="If not checked,user will be able to update the selected picklist value by clicking on the picklist value." data-tooltip-append-to-body="true">
-						<i class="icon icon-information font-Size-13"></i>
-					</span>
-				</label>
-			</div>
-			<div class="col-md-4 padding-right-0">
-				<div class="margin-bottom-0">
-					<input type="checkbox" id="read-only-checkbox-edit-form-group"
-                                                class="margin-top-sm" data-ng-model="config.readOnly"/>   
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary">
-			<i class="icon icon-check margin-right-sm"></i>
-			Save
-		</button>
-		<button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()">
-			<i class="icon icon-close margin-right-sm"></i>
-			Close
-		</button>
-	</div>
+  <div class="modal-header">
+    <h3 class="modal-title col-md-9">Picklist as Phases</h3>
+    <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close" id="close-edit-widget-form-btn">
+      <div aria-hidden="true" class="version-button">+</div>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <label for="widget-title" class="control-label">Widget Title</label>
+          <input id="widget-title" name="widget-title" type="text" class="form-control" data-ng-model="config.title" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <label for="resourcefields" class="control-label margin-top-sm">
+            Choose a Picklist
+            <span class="text-danger">*</span>
+            <span data-uib-tooltip="Select this option to run the widget in read-only mode and display visualizations.Uncheck this option to make changes and have the widget display changes in real-time." data-tooltip-append-to-body="true">
+              <i class="icon icon-information font-Size-13"></i>
+            </span>
+          </label>
+        </div>
+        <div class="col-md-12">
+          <div class="margin-bottom-0" data-ng-class="{ 'has-error': editPicklistAsPhasesForm.resourcefields.$invalid && editPicklistAsPhasesForm.resourcefields.$touched }">
+            <select name="resourcefields" id="resourcefields" class="form-control" data-ng-options="field.name as field.title for field in fieldsArray" data-ng-model="config.picklistItem" data-ng-change="loadlistitem(config.picklistItem)" required>
+              <option value="">Select an Option</option>
+            </select>
+            <div data-cs-messages="editPicklistAsPhasesForm.resourcefields"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <label class="control-label margin-top-sm"
+            >Read Only
+            <span data-uib-tooltip="Users cannot update the picklist value by clicking on it." data-tooltip-append-to-body="true">
+              <i class="icon icon-information font-Size-13"></i>
+            </span>
+          </label>
+        </div>
+        <div class="col-md-12">
+          <div class="margin-bottom-0">
+            <input type="checkbox" id="read-only-checkbox-edit-form-group" class="margin-top-sm" data-ng-model="config.readOnly" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary">
+      <i class="icon icon-check margin-right-sm"></i>
+      Save
+    </button>
+    <button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()">
+      <i class="icon icon-close margin-right-sm"></i>
+      Close
+    </button>
+  </div>
 </form>
