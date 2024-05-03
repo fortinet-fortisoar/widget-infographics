@@ -11,7 +11,7 @@
         "pages": [
             "View Panel"
         ],
-        "certified": "Yes",
+        "certified": "No",
         "publisher": "Fortinet",
 	"snapshots": [
             "https://repo.fortisoar.fortinet.com/fsr-widgets/picklistAsPhases-1.0.0/images/edit-picklist-as-phases.png",
