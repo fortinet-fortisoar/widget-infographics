@@ -5,7 +5,7 @@
 The Picklist as Phases widget shows the selected picklist value in the visual representation i.e. like a flow diagram.
 
 
-## Record Summary Card
+## Picklist as Phases
 
 1. Click to open the detailed view of a record, for example an Incident.
 

@@ -34,7 +34,6 @@ function editPicklistAsPhases100Ctrl($scope, $uibModalInstance, config, $state, 
       return dict.name === config.picklistItem;
     });
     // Update configuration properties based on the filtered dictionary
-    //$scope.config.picklistItemIRI = filteredDict[0]['options'][0]['listName'];
     $scope.config.picklistFieldObject = filteredDict[0];
     $uibModalInstance.close($scope.config);
   }
