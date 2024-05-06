@@ -128,20 +128,23 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
 
   // Function to subscribe to WebSocket for widget updates
   function widgetWSSubscribe() {
-    websocketService.subscribe($state.params.module + '/' + $state.params.id, function (result) {
-      var changedAttribute;
-      widgetsubscription = result;
-      if (angular.isDefined(result.changeData)) {
-        if (result.changeData.includes($scope.config.picklistItem)) {
-          changedAttribute = $scope.config.picklistItem;
+    websocketService
+      .subscribe($state.params.module + '/' + $state.params.id, function (result) {
+        var changedAttribute;
+        if (angular.isDefined(result.changeData)) {
+          if (result.changeData.includes($scope.config.picklistItem)) {
+            changedAttribute = $scope.config.picklistItem;
+          }
         }
-      }
-      // If the picklist item has changed, update the entity and picklist value
-      if (changedAttribute) {
-        $scope.entity = FormEntityService.get();
-        $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
-      }
-    });
+        // If the picklist item has changed, update the entity and picklist value
+        if (changedAttribute) {
+          $scope.entity = FormEntityService.get();
+          $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
+        }
+      })
+      .then(function (data) {
+        widgetsubscription = data;
+      });
   }
 
   init();
