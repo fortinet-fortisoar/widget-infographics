@@ -6,9 +6,9 @@
 
 angular.module('cybersponse').controller('picklistAsPhases100Ctrl', picklistAsPhases100Ctrl);
 
-picklistAsPhases100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '_'];
+picklistAsPhases100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '$timeout', '_'];
 
-function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, _) {
+function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
   var widgetsubscription;
   $scope.config = config;
   $scope.title = '';
@@ -19,6 +19,8 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   $scope.visibility = $scope.entity.fields[$scope.config.picklistItem]['visible'];
   $scope.handleClick = handleClick;
   $scope.pickListValue = $scope.entity['originalData'][$scope.config.picklistItem] ? $scope.entity['originalData'][$scope.config.picklistItem]['itemValue'] : '';
+  $scope.notifyFieldChange = notifyFieldChange;
+  $scope.viewValueChange = viewValueChange;
   $scope.activeItemImage = widgetBasePath + 'images/' + ($scope.currentTheme === 'light' ? 'light_theme_active_chevron.png' : 'chevron_active_arrow.png');
   $scope.inactiveItemImage = widgetBasePath + 'images/' + ($scope.currentTheme === 'light' ? 'light_theme_inactive_chevron.png' : 'chevron_inactive_arrow.png');
 
@@ -31,7 +33,7 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   // Function to notify field change
   function notifyFieldChange(value, field) {
     field.value = value;
-    viewValueChange(field);
+    $scope.viewValueChange(field);
     $rootScope.$broadcast('csFields:viewValueChange', {
       field: field,
       entity: $scope.entity,
@@ -73,23 +75,6 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
     init();
   });
 
-  // Event listener for formGroup's FieldChange
-  $scope.$on('formGroup:fieldChange', function (event, entity) {
-    entity = entity.module === $scope.entity.name ? entity : undefined;
-
-    //Update the visibility of Widget
-    $scope.visibility = $scope.entity.fields[$scope.config.picklistItem]['visible'];
-
-    //Update the $scope.pickListValue
-    if (entity.originalData[$scope.config.picklistItem]) {
-      if (entity.originalData[$scope.config.picklistItem]['itemValue'] !== $scope.pickListValue) {
-        $scope.pickListValue = entity.originalData[$scope.config.picklistItem]['itemValue'];
-      }
-    } else {
-      $scope.pickListValue = '';
-    }
-  });
-
   // Event listener for destroying the scope
   $scope.$on('$destroy', function () {
     if (widgetsubscription) {
@@ -128,20 +113,26 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
 
   // Function to subscribe to WebSocket for widget updates
   function widgetWSSubscribe() {
-    websocketService.subscribe($state.params.module + '/' + $state.params.id, function (result) {
-      var changedAttribute;
-      widgetsubscription = result;
-      if (angular.isDefined(result.changeData)) {
-        if (result.changeData.includes($scope.config.picklistItem)) {
-          changedAttribute = $scope.config.picklistItem;
+    websocketService
+      .subscribe($state.params.module + '/' + $state.params.id, function (result) {
+        var changedAttribute;
+        if (angular.isDefined(result.changeData)) {
+          if (result.changeData.includes($scope.config.picklistItem)) {
+            changedAttribute = $scope.config.picklistItem;
+          }
         }
-      }
-      // If the picklist item has changed, update the entity and picklist value
-      if (changedAttribute) {
-        $scope.entity = FormEntityService.get();
-        $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
-      }
-    });
+        // If the picklist item has changed, update the entity and picklist value
+        if (changedAttribute) {
+          //Added the timeout to avoid race condition in the alerts record updating.
+          $timeout(function () {
+            $scope.entity = FormEntityService.get();
+            $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
+          }, 250);
+        }
+      })
+      .then(function (data) {
+        widgetsubscription = data;
+      });
   }
 
   init();
