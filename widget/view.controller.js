@@ -127,7 +127,6 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
           $timeout(function () {
             $scope.entity = FormEntityService.get();
             $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
-            firstTimeLoad = false;
           }, 250);
         }
       })
