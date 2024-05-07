@@ -10,7 +10,6 @@ picklistAsPhases100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$in
 
 function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
   var widgetsubscription;
-  var firstTimeLoad = true;
   $scope.config = config;
   $scope.title = '';
   $scope.currentTheme = $rootScope.theme.id;
@@ -124,18 +123,12 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
         }
         // If the picklist item has changed, update the entity and picklist value
         if (changedAttribute) {
-          //Added the condition to check if the page/widget is loaded 1st time.
-          //Base on the condition added the timeout
-          if (firstTimeLoad) {
-            $timeout(function () {
-              $scope.entity = FormEntityService.get();
-              $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
-              firstTimeLoad = false;
-            }, 250);
-          } else {
+          //Added the timeout to avoid race condition in the alerts record updating.
+          $timeout(function () {
             $scope.entity = FormEntityService.get();
             $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
-          }
+            firstTimeLoad = false;
+          }, 250);
         }
       })
       .then(function (data) {
