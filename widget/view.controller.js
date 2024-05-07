@@ -124,6 +124,8 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
         }
         // If the picklist item has changed, update the entity and picklist value
         if (changedAttribute) {
+          //Added the condition to check if the page/widget is loaded 1st time.
+          //Base on the condition added the timeout
           if (firstTimeLoad) {
             $timeout(function () {
               $scope.entity = FormEntityService.get();
