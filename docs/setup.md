@@ -9,13 +9,16 @@
 
 # Configuration
 
-The following sections lay out information necessary to customize this widget.
+The following table lays out necessary information to customize this widget.
 
-| Fields            | Description                                                                                                                                                                 |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Title             | Specify a title for the picklist as phases.                                                                                                                                 |
-| Choose a Picklist | Select a picklist field to display its values in the visual representation.                                                                                                 |
-| Read Only         | Select this option to run the widget in read-only mode and display visualizations.<br>Uncheck this option to make changes and have the widget display changes in real-time. |
+| Fields            | Description                                                                                                                                                                                                                                                                                       |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Title             | Specify a title for the picklist as phases.                                                                                                                                                                                                                                                       |
+| Choose a Picklist | Select a picklist field to display its values in the visual representation.                                                                                                                                                                                                                       |
+| Read Only         | Select this checkbox to display the flow diagram in a *read-only* mode. In *read-only* mode, clicking the visualization has no effect.<br /><br />Clear this checkbox to disable *read-only* mode. In this mode, clicking a picklist value in the visualization, updates the record in real-time. |
+
+
+# Next Steps
 
 | [Usage](./usage.md) |
 |---------------------|
