@@ -1,12 +1,12 @@
 {
     "name": "picklistAsPhases",
     "title": "Picklist as Phases",
-    "subTitle": "Picklist as Phases",
+    "subTitle": "The widget is designed to display picklist values as phases in a flow diagram format. Each phase represents a specific state or stage in a process.",
     "version": "1.0.0",
     "published_date": 1708552690,
     "releaseNotes": "unavailable",
     "metadata": {
-        "description": "",
+        "description": "The widget is designed to display picklist values as phases in a flow diagram format. Each phase represents a specific state or stage in a process.",
 	"help_online": "https://github.com/fortinet-fortisoar/widget-picklist-as-phases/tree/release/1.0.0/README.md",
         "pages": [
             "View Panel"
