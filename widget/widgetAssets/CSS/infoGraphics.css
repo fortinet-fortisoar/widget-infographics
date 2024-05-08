@@ -59,9 +59,9 @@
 
 .custom-div.inactive.editable:hover span {
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .custom-div.inactive span {
-  font-weight: 500;
+  font-weight: 400;
 }
