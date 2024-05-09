@@ -4,11 +4,11 @@
   Copyright end */
 'use strict';
 
-angular.module('cybersponse').controller('picklistAsPhases100Ctrl', picklistAsPhases100Ctrl);
+angular.module('cybersponse').controller('picklistAsPhases101Ctrl', picklistAsPhases101Ctrl);
 
-picklistAsPhases100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '$timeout', '_'];
+picklistAsPhases101Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '$timeout', '_'];
 
-function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
+function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
   var widgetsubscription;
   $scope.config = config;
   $scope.title = '';
