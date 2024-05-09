@@ -1,0 +1,67 @@
+/* Common styles for both active and inactive states */
+.custom-div {
+  padding: 19px 50px;
+  width: 190px;
+  height: 55px;
+  display: inline-flex;
+  margin-right: -25px;
+  position: relative;
+  font-family: ;
+}
+.custom-span {
+  font-size: 10pt;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 20px;
+  max-width: 100px;
+  font-weight: 900;
+}
+
+/* Styles for active state */
+.custom-div.active {
+  cursor: default;
+}
+
+.custom-div.inactive {
+  cursor: default;
+}
+/* Styles for inactive state */
+.custom-div.inactive.editable {
+  cursor: pointer;
+}
+.custom-div.inactive.editable:hover {
+  transform: scale(1.08);
+}
+
+.custom-div.inactive.light img {
+  opacity: 0.6;
+}
+
+.custom-div.inactive.editable.light img {
+  opacity: 0.6;
+}
+.custom-div.inactive.editable.light:hover img {
+  opacity: 0.85;
+}
+
+.custom-div.inactive img {
+  opacity: 0.6;
+}
+
+.custom-div.inactive.editable img {
+  opacity: 0.6;
+}
+.custom-div.inactive.editable:hover img {
+  opacity: 1;
+}
+
+.custom-div.inactive.editable:hover span {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.custom-div.inactive span {
+  font-weight: 400;
+}
