@@ -4,11 +4,11 @@
   Copyright end */
 'use strict';
 
-angular.module('cybersponse').controller('editPicklistAsPhases100Ctrl', editPicklistAsPhases100Ctrl);
+angular.module('cybersponse').controller('editPicklistAsPhases101Ctrl', editPicklistAsPhases101Ctrl);
 
-editPicklistAsPhases100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
+editPicklistAsPhases101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
 
-function editPicklistAsPhases100Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
+function editPicklistAsPhases101Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
   $scope.cancel = cancel;
   $scope.save = save;
   $scope.config = config;
