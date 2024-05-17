@@ -28,6 +28,9 @@ function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, M
   function init() {
     widgetWSSubscribe();
     getPicklistValues();
+	//On re-initialization of the widget, Fetching & updating the Latest Picklist Value
+	$scope.entity = FormEntityService.get();
+    $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
   }
 
   // Function to notify field change
@@ -101,7 +104,9 @@ function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, M
       })
         .update(payload)
         .$promise.then(function () {
-          $scope.pickListValue = picklistItem['itemValue'];
+          //Added the code, to fetch Latest Picklist Value and then update the scope variable.
+		  $scope.entity = FormEntityService.get();
+          $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
           //Broadcasting the Update Event
           notifyFieldChange(picklistItem, $scope.config.picklistFieldObject);
         })
