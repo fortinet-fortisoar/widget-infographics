@@ -60,7 +60,7 @@ function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, M
   //Fetch all the picklist itemValue of the selected picklist and sort them based upon the order Index
   function getPicklistValues() {
     picklistsService
-      .getPicklistByIri($scope.config.picklistFieldObject['options'][0]['listName'])
+      .getPicklistByIri($scope.config.picklistFieldObjectIRI)
       .then(function (data) {
         $scope.picklistObject = data.picklists.sort((a, b) => a.orderIndex - b.orderIndex);
       })
@@ -108,7 +108,7 @@ function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, M
 		  $scope.entity = FormEntityService.get();
           $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
           //Broadcasting the Update Event
-          notifyFieldChange(picklistItem, $scope.config.picklistFieldObject);
+          notifyFieldChange(picklistItem, $scope.entity['fields'][$scope.config.picklistItem]);
         })
         .catch(function (error) {
           console.error('Error updating resource:', error);

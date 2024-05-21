@@ -5,10 +5,10 @@
 <link rel="stylesheet" type="text/css" href="{{widgetCssPath}}" />
 <div class="widget widget-container chart" style="overflow: auto" ng-if="visibility">
   <div class="display-flex-space-between margin-chart">
-    <div class="padding-right-0 padding-left-0 widget-dashboard-title-width" data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
-      <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">{{config.title}}</h5>
+    <div class="widget-dashboard-title-width" data-ng-class="widget-title-width">
+      <span class="control-label control-label-wrap ng-binding margin-bottom-20 margin-top-20" style="padding-left: 15px">{{config.title}}</span>
     </div>
-    <div class="padding-right-0 padding-left-0" data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-actions-width' : 'widget-actions-width'"></div>
+    <div class="padding-right-0 padding-left-0" data-ng-class="widget-actions-width"></div>
   </div>
   <div class="list-unstyled padding-20 margin-top-negative-20" style="white-space: nowrap">
     <div
