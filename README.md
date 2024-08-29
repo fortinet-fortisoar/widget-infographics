@@ -1,7 +1,7 @@
 # Release Information
 
-- **Version**: 1.0.0
-- **Certified**: No
+- **Version**: 1.0.1
+- **Certified**: Yes
 - **Publisher**: Fortinet
 - **Compatible Version**: 7.4.3 or Later
 

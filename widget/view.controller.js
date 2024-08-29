@@ -4,11 +4,11 @@
   Copyright end */
 'use strict';
 
-angular.module('cybersponse').controller('picklistAsPhases100Ctrl', picklistAsPhases100Ctrl);
+angular.module('cybersponse').controller('picklistAsPhases101Ctrl', picklistAsPhases101Ctrl);
 
-picklistAsPhases100Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '$timeout', '_'];
+picklistAsPhases101Ctrl.$inject = ['$scope', 'FormEntityService', '$state', '$interval', 'Modules', 'config', 'websocketService', 'picklistsService', '$rootScope', 'API', '$resource', 'widgetBasePath', '$timeout', '_'];
 
-function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
+function picklistAsPhases101Ctrl($scope, FormEntityService, $state, $interval, Modules, config, websocketService, picklistsService, $rootScope, API, $resource, widgetBasePath, $timeout, _) {
   var widgetsubscription;
   $scope.config = config;
   $scope.title = '';
@@ -28,6 +28,9 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   function init() {
     widgetWSSubscribe();
     getPicklistValues();
+	//On re-initialization of the widget, Fetching & updating the Latest Picklist Value
+	$scope.entity = FormEntityService.get();
+    $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
   }
 
   // Function to notify field change
@@ -57,7 +60,7 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
   //Fetch all the picklist itemValue of the selected picklist and sort them based upon the order Index
   function getPicklistValues() {
     picklistsService
-      .getPicklistByIri($scope.config.picklistFieldObject['options'][0]['listName'])
+      .getPicklistByIri($scope.config.picklistFieldObjectIRI)
       .then(function (data) {
         $scope.picklistObject = data.picklists.sort((a, b) => a.orderIndex - b.orderIndex);
       })
@@ -101,9 +104,11 @@ function picklistAsPhases100Ctrl($scope, FormEntityService, $state, $interval, M
       })
         .update(payload)
         .$promise.then(function () {
-          $scope.pickListValue = picklistItem['itemValue'];
+          //Added the code, to fetch Latest Picklist Value and then update the scope variable.
+		  $scope.entity = FormEntityService.get();
+          $scope.pickListValue = $scope.entity['fields'][$scope.config.picklistItem]['value'] ? $scope.entity['fields'][$scope.config.picklistItem]['value']['itemValue'] : '';
           //Broadcasting the Update Event
-          notifyFieldChange(picklistItem, $scope.config.picklistFieldObject);
+          notifyFieldChange(picklistItem, $scope.entity['fields'][$scope.config.picklistItem]);
         })
         .catch(function (error) {
           console.error('Error updating resource:', error);

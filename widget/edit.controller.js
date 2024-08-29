@@ -4,11 +4,11 @@
   Copyright end */
 'use strict';
 
-angular.module('cybersponse').controller('editPicklistAsPhases100Ctrl', editPicklistAsPhases100Ctrl);
+angular.module('cybersponse').controller('editPicklistAsPhases101Ctrl', editPicklistAsPhases101Ctrl);
 
-editPicklistAsPhases100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
+editPicklistAsPhases101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '$state', 'Entity', '_'];
 
-function editPicklistAsPhases100Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
+function editPicklistAsPhases101Ctrl($scope, $uibModalInstance, config, $state, Entity, _) {
   $scope.cancel = cancel;
   $scope.save = save;
   $scope.config = config;
@@ -34,7 +34,7 @@ function editPicklistAsPhases100Ctrl($scope, $uibModalInstance, config, $state, 
       return dict.name === config.picklistItem;
     });
     // Update configuration properties based on the filtered dictionary
-    $scope.config.picklistFieldObject = filteredDict[0];
+    $scope.config.picklistFieldObjectIRI = filteredDict[0]['options'][0]['listName'];
     $uibModalInstance.close($scope.config);
   }
 
